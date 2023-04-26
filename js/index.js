@@ -35,29 +35,30 @@ function copyInputValue() {
             .writeText(inputValue)
             .then(() => {
 
-                setTimeout(() => {
-        
-                    message.innerHTML = 'Text copied';            
+                if (message) {
                     setTimeout(() => {
-                        message.innerHTML = '';
-                    }, 1500)
-
-                }, 100)
+                        message.innerHTML = 'Text copied';
+                        setTimeout(() => {
+                            message.innerHTML = '';
+                        }, 1500);
+                    }, 100);
+                }
 
             })
             .catch(() => {
                 alert("Something is wrong, try again later!");
             });
-            
+
     } else {
 
         setTimeout(() => {
 
-            message.innerHTML = 'Error, invalid content!';
-
-            setTimeout(() => {
-                message.innerHTML = '';
-            }, 1500)
+            if (message) {
+                message.innerHTML = 'Error, invalid content!';
+                setTimeout(() => {
+                    message.innerHTML = '';
+                }, 1500);
+            }
 
         }, 100);
 
